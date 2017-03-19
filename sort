@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class Text{
+public static void main(String[] args) {
+		Scanner input =new Scanner(System.in);
+		int num;
+		int [] list = new int [10];
+		System.out.println("enter 10 numbers ");
+		for (int i=0;i<10 ;i++ ) {
+			list[i]=input.nextInt();
+		}
+		menue();
+		System.out.println("please enter the sort methord:");
+		num=input.nextInt();
+		switch(num){
+			case 1:bubblesort(list);break;
+			case 2:insersort(list);break;
+			case 3:selectSort(list);break;
+		}
+
+		for (int i=0;i<10 ;i++ ) {
+			
+				System.out.print(list[i]+"  ");
+			
+		}
+}
+
+
+public static void menue(){
+	System.out.println();
+	System.out.println("1.Bubblesort");
+	System.out.println("2.Insersort");
+	System.out.println("3.SelectSort");
+	System.out.println();
+}
+
+/*********************排序方法*/
+
+public static void selectSort(int list[]){//选择排序
+
+	int i,j;
+	int max , temp;
+	for (i=0;i<list.length-1;i++) {
+		max=i;//任意取一个数把它当作最大值
+		for (j=i+1;j<list.length;j++) {
+			if (list[max]<list[j]) {//将你设订的最大值与之后的做比较如果后面有比max大的数则把改数的下标交给max
+				max=j;
+			}
+
+		}
+			if(max!=i){//如果最大值与假设的最大值不相等的时候，则把max与该数互换位置
+				temp=list[i];
+				list[i]=list[max];
+				list[max]=temp;
+			}
+	}
+
+
+
+
+}
+
+
+public static void insersort(int list[]){//插入排序
+	int i,j;
+	int [] arr= new int [10]; //创建一个新的数组来存放原来的数据，就好比人的另一只手一样一张用来存放已经排好的数据，里面的数据都是已经排序完成的
+	arr[0]=list[0];
+	int temp;
+	for (i=1;i<list.length;i++) {//外层循环控制插入的顺序，从第二个数开始，依次比较里面的数并且把最大的放到数组的最左边
+		arr[i]=list[i];//将未排序的数复制给新的数组
+		for (j=i;j>0;j--) {//倒叙比较数的大小并且把大的与小的互换位置
+			if (arr[j]<arr[j-1]){
+				temp=arr[j];
+				arr[j]=arr[j-1];
+				arr[j-1]=temp;
+			}
+		}
+	}
+	for (int a=0;a<list.length ;a++ ) {
+		list[a]=arr[i];
+	}
+
+
+}
+
+
+public static void bubblesort(int [] list){
+		int temp;
+		for (int i=0;i<10 ;i++ ) {
+			for (int j=0;j<10-i-1 ;j++ ) {
+				if (list[j]>list[j+1]) {
+				temp=list[j];
+				list[j]=list[j+1];
+				list[j+1]=temp;
+				}
+			}
+		}
+
+
+	}
+}
