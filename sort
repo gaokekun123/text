@@ -41,7 +41,7 @@ public static void selectSort(int list[]){//选择排序
 	int i,j;
 	int max , temp;
 	for (i=0;i<list.length-1;i++) {
-		max=i;//任意取一个数把它当作最大值
+		max=i;//找到数组中最大的数的下标并吧它赋给max
 		for (j=i+1;j<list.length;j++) {
 			if (list[max]<list[j]) {//将你设订的最大值与之后的做比较如果后面有比max大的数则把改数的下标交给max
 				max=j;
